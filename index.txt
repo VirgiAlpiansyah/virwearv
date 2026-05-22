@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>VIRWEAR | Biru Tenang · Premium Clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --bg-soft: #f4f8fe;
+    --bg-pure: #ffffff;
+    --blue-deep: #0a2b3e;
+    --blue-accent: #2c7da0;
+    --blue-light: #e6f0f9;
+    --blue-mid: #bbd4e5;
+    --text-dark: #1c2e3a;
+    --text-soft: #406277;
+    --card-shadow: 0 12px 28px -8px rgba(10,43,62,0.06), 0 2px 4px rgba(0,0,0,0.02);
+    --border-light: #e2edf5;
+    --gradient-hero: linear-gradient(120deg, #eef4fc 0%, #ffffff 100%);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-soft);
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.8rem;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(44, 125, 160, 0.15);
+    padding: 0.85rem 2rem;
+    transition: all 0.2s ease;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    background: linear-gradient(130deg, #0a2b3e, #2c7da0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    transition: 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue-accent); }
+  .nav-cta {
+    background: var(--blue-deep);
+    color: white !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 40px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(10,43,62,0.08);
+  }
+  .nav-cta:hover {
+    background: #2c7da0;
+    transform: translateY(-2px);
+  }
+
+  /* MOBILE */
+  .mobile-menu-btn {
+    display: none;
+    background: var(--blue-deep);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(12px);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+  }
+  .mobile-nav-overlay.open { display: flex; }
+  .mobile-nav-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: var(--blue-deep);
+    border: none;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    font-size: 1rem;
+  }
+  .mobile-nav-overlay a {
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-dark);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: var(--gradient-hero);
+    padding-top: 100px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(44,125,160,0.1);
+    padding: 0.3rem 1rem;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--blue-accent);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--blue-deep);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title span {
+    color: var(--blue-accent);
+    font-style: italic;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-soft);
+    margin-bottom: 2rem;
+    max-width: 90%;
+  }
+  .btn-primary {
+    background: var(--blue-deep);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 1rem;
+    transition: 0.25s;
+    box-shadow: 0 6px 12px rgba(10,43,62,0.08);
+  }
+  .btn-primary:hover {
+    background: #2c7da0;
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1.5px solid var(--blue-mid);
+    color: var(--blue-deep);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+  .btn-ghost:hover {
+    border-color: var(--blue-accent);
+    background: rgba(44,125,160,0.05);
+  }
+  .hero-visual {
+    background: rgba(255,255,255,0.7);
+    border-radius: 48px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(44,125,160,0.2);
+    backdrop-filter: blur(2px);
+  }
+  .hero-badge-large {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    color: #cfe2ed;
+    letter-spacing: -2px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--blue-deep);
+    color: white;
+    padding: 0.8rem 0;
+    overflow: hidden;
+  }
+  .ticker-inner {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 22s linear infinite;
+    gap: 2rem;
+  }
+  .ticker-item { font-weight: 500; letter-spacing: 0.5px; font-size: 0.85rem; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  section { padding: 5rem 0; }
+  .section-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: var(--blue-accent);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: var(--blue-deep);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .stat-card {
+    background: white;
+    border-radius: 28px;
+    padding: 1.4rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-light);
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+  }
+  .about-img {
+    background: linear-gradient(145deg, #e0edf7, #f4f9fe);
+    border-radius: 42px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--blue-deep);
+    box-shadow: var(--card-shadow);
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* PRODUK - DENGAN GAMBAR & HARGA */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  .product-card {
+    background: white;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-light);
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 25px 35px -14px rgba(10,43,62,0.12); }
+  .product-visual {
+    background: #f8fafd;
+    padding: 1rem;
+    text-align: center;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .product-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 24px;
+    transition: transform 0.4s ease;
+  }
+  .product-card:hover .product-img {
+    transform: scale(1.02);
+  }
+  .product-tag {
+    display: inline-block;
+    background: #eef3fc;
+    color: var(--blue-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 0.2rem 1rem;
+    margin: 1rem 0 0 1rem;
+  }
+  .product-info { padding: 1.5rem; }
+  .product-name { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .product-desc { color: var(--text-soft); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; }
+  
+  /* Style HARGA baru */
+  .product-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .price-original {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+  .price-discount {
+    background: #e8f0fe;
+    color: var(--blue-accent);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 30px;
+    font-weight: 500;
+  }
+  
+  .variant-pill {
+    display: inline-block;
+    background: #f0f5fa;
+    border-radius: 40px;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+  }
+  
+  /* Tombol Beli */
+  .buy-btn {
+    display: inline-block;
+    background: var(--blue-deep);
+    color: white;
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+  .buy-btn:hover {
+    background: var(--blue-accent);
+    transform: translateY(-2px);
+  }
+
+  /* FEATURE */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 28px;
+    padding: 1.8rem;
+    box-shadow: var(--card-shadow);
+    transition: 0.2s;
+    border: 1px solid var(--border-light);
+  }
+  .feature-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-mid);
+    margin-bottom: 0.8rem;
+  }
+
+  /* TESTIMONI */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  .testi-card {
+    background: white;
+    border-radius: 28px;
+    padding: 1.8rem;
+    box-shadow: var(--card-shadow);
+  }
+  .testi-stars { color: #eab308; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { color: var(--text-soft); line-height: 1.55; margin-bottom: 1.2rem; }
+  .testi-avatar {
+    width: 42px;
+    height: 42px;
+    background: #e5eff8;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-accent);
+    font-weight: 600;
+  }
+
+  /* KONTAK */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: white;
+    border-radius: 48px;
+    padding: 2.5rem;
+    box-shadow: var(--card-shadow);
+  }
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .contact-icon {
+    background: #eef3fc;
+    width: 46px;
+    height: 46px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-accent);
+  }
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border-light);
+    border-radius: 32px;
+    background: var(--bg-soft);
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .form-submit {
+    background: var(--blue-deep);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0e2a38;
+    color: #e3edf5;
+    border-radius: 40px 40px 0 0;
+    margin-top: 2rem;
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .wa-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: #25D366;
+    border-radius: 60px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    z-index: 99;
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+    .hero-grid, .about-grid, .product-grid, .features-grid, .testi-grid, .contact-grid, .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-desc { max-width: 100%; }
+    .hero-visual { margin-top: 1rem; }
+    .container { padding: 0 1.2rem; }
+    section { padding: 3rem 0; }
+    .contact-grid { padding: 1.5rem; }
+    .product-img { height: 200px; }
+  }
+  @media (max-width: 550px) {
+    .hero-buttons { display: flex; flex-direction: column; gap: 0.8rem; }
+    .btn-primary, .btn-ghost { text-align: center; margin: 0; }
+    .product-grid { gap: 1.2rem; }
+    .features-grid { gap: 1rem; }
+    .product-img { height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-nav-overlay" id="mobileNav">
+  <button class="mobile-nav-close" id="navClose">✕</button>
+  <a href="#tentang" onclick="closeMobileNav()">Tentang</a>
+  <a href="#produk" onclick="closeMobileNav()">Koleksi</a>
+  <a href="#kontak" class="nav-cta" style="background: #0a2b3e; color:white;" onclick="closeMobileNav()">Hubungi Kami</a>
+</div>
+
+<!-- GANTI NOMOR WHATSAPP DI BAWAH INI dengan nomor kamu -->
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank">💬</a>
+
+<nav>
+  <div class="nav-container">
+    <a href="#" class="logo">VIRWEAR</a>
+    <ul class="nav-links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+    </ul>
+    <button class="mobile-menu-btn" id="navOpen">☰ Menu</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-eyebrow">✦ PREMIUM CLOTHING INDONESIA ✦</span>
+      <h1 class="hero-title">Pakaian dengan <span>Cerita & Karakter</span></h1>
+      <p class="hero-desc">Dari bahan terbaik, untuk jiwa yang estetik. Kaos, kemeja, hoodie — tenang namun berkelas. Tampil beda dengan sentuhan biru yang kalem.</p>
+      <div class="hero-buttons">
+        <a href="#produk" class="btn-primary">Lihat Koleksi →</a>
+        <a href="#tentang" class="btn-ghost">Cerita Kami</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge-large">VIRWEAR</div>
+      <p style="margin-top: 1rem; font-weight: 500; color: var(--blue-accent);">| tenang & bermakna |</p>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">✦ Bahan Premium ✦</span> <span>⚬</span>
+    <span class="ticker-item">Desain Eksklusif ✦</span> <span>⚬</span>
+    <span class="ticker-item">Nyaman Sepanjang Hari ✦</span> <span>⚬</span>
+    <span class="ticker-item">Gratis Ongkir ✦</span> <span>⚬</span>
+    <span class="ticker-item">Ready Stock ✦</span> <span>⚬</span>
+    <span class="ticker-item">✦ Bahan Premium ✦</span> <span>⚬</span>
+    <span class="ticker-item">Desain Eksklusif ✦</span>
+  </div>
+</div>
+
+<section id="tentang">
+  <div class="container about-grid">
+    <div>
+      <span class="section-label">Tentang VIRWEAR</span>
+      <h2 class="section-title">Fashion Bukan Sekadar Gaya, Tapi Identitas</h2>
+      <p style="margin-bottom: 1.2rem; color: var(--text-soft);">VIRWEAR lahir dari cinta pada detail & kenyamanan. Kami percaya setiap lembar kain bisa menjadi medium ekspresi. Dari bahan pilihan hingga jahitan presisi, semua kami persembahkan untuk kamu yang mengedepankan estetika tenang namun kuat.</p>
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-num">6K+</span><div>Pelanggan Puas</div></div>
+        <div class="stat-card"><span class="stat-num">4.9</span><div>Rating Google</div></div>
+        <div class="stat-card"><span class="stat-num">100%</span><div>Bahan Berkualitas</div></div>
+        <div class="stat-card"><span class="stat-num">24 Jam</span><div>Proses Cepat</div></div>
+      </div>
+    </div>
+    <div class="about-img">
+      <span style="font-size: 1.6rem;">⎯  studio  ⎯  <br> #virwear</span>
+    </div>
+  </div>
+</section>
+
+<section id="produk" style="background: white;">
+  <div class="container">
+    <span class="section-label">Koleksi Kami</span>
+    <h2 class="section-title">Pilih Gaya yang Mencerminkan Dirimu</h2>
+    <div class="product-grid">
+      <!-- Produk 1: Kaos Oversize Rp65.000 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <img class="product-img" src="https://placehold.co/600x700/e6f0f9/2c7da0?text=Kaos+Oversize" alt="Kaos Oversize VIRWEAR">
+        </div>
+        <span class="product-tag">BESTSELLER</span>
+        <div class="product-info">
+          <div class="product-name">Kaos Oversize</div>
+          <p class="product-desc">Cotton combed 30s, potongan oversize yang nyaman. Cocok untuk santai maupun hangout.</p>
+          <div class="product-price">
+            Rp65.000
+            <span class="price-discount">Diskon 20%</span>
+          </div>
+          <div><span class="variant-pill">6 Warna</span><span class="variant-pill">S-XXL</span><span class="variant-pill">Oversize Fit</span></div>
+          <a href="https://wa.me/6281234567890?text=Halo%20VIRWEAR%2C%20saya%20mau%20beli%20Kaos%20Oversize" class="buy-btn" target="_blank">Beli via WhatsApp →</a>
+        </div>
+      </div>
+
+      <!-- Produk 2: Kemeja Casual Rp95.000 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <img class="product-img" src="https://placehold.co/600x700/f0f5fa/2c7da0?text=Kemeja+Casual" alt="Kemeja Casual VIRWEAR">
+        </div>
+        <span class="product-tag">NEW</span>
+        <div class="product-info">
+          <div class="product-name">Kemeja Casual</div>
+          <p class="product-desc">Linen & katun premium, desain minimalis namun berkarakter. Cocok untuk daily atau semi formal.</p>
+          <div class="product-price">
+            Rp95.000
+            <span class="price-discount">Hemat 15%</span>
+          </div>
+          <div><span class="variant-pill">Lengan Pendek</span><span class="variant-pill">Motif garis</span><span class="variant-pill">Ukuran S-L</span></div>
+          <a href="https://wa.me/6281234567890?text=Halo%20VIRWEAR%2C%20saya%20mau%20beli%20Kemeja%20Casual" class="buy-btn" target="_blank">Beli via WhatsApp →</a>
+        </div>
+      </div>
+
+      <!-- Produk 3: Hoodie Rp120.000 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <img class="product-img" src="https://placehold.co/600x700/eef3fc/2c7da0?text=Hoodie" alt="Hoodie Premium VIRWEAR">
+        </div>
+        <span class="product-tag">LIMITED</span>
+        <div class="product-info">
+          <div class="product-name">Hoodie</div>
+          <p class="product-desc">Fleece anti-pilling, potongan rapi. Hangat & tetap stylish untuk cuaca apapun.</p>
+          <div class="product-price">
+            Rp120.000
+            <span class="price-discount">Best Deal</span>
+          </div>
+          <div><span class="variant-pill">3 Warna earth</span><span class="variant-pill">Oversized fit</span><span class="variant-pill">Unisex</span></div>
+          <a href="https://wa.me/6281234567890?text=Halo%20VIRWEAR%2C%20saya%20mau%20beli%20Hoodie" class="buy-btn" target="_blank">Beli via WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <span class="section-label">Keunggulan</span>
+    <h2 class="section-title">Kenapa Harus VIRWEAR?</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-num">01</div><div class="feature-title">Bahan Terpilih</div><p>Cotton combed, linen, fleece premium yang nyaman di kulit dan tahan lama.</p></div>
+      <div class="feature-card"><div class="feature-num">02</div><div class="feature-title">Desain Eksklusif</div><p>Tidak diproduksi massal, setiap koleksi memiliki sentuhan khas VIRWEAR.</p></div>
+      <div class="feature-card"><div class="feature-num">03</div><div class="feature-title">Etis & Lokal</div><p>Dibuat di Indonesia dengan memberdayakan pengrajin lokal dan standar etis.</p></div>
+      <div class="feature-card"><div class="feature-num">04</div><div class="feature-title">Packing Estetik</div><p>Setiap pesanan dikemas rapi dengan sentuhan premium dan ramah lingkungan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <span class="section-label">Testimoni</span>
+    <h2 class="section-title">Apa Kata Mereka</h2>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Kaosnya lembut banget! Jahitan rapi dan warnanya awet. Suka banget sama konsep biru putihnya yang kalem tapi tetap berkarakter."</p><div class="testi-avatar">RN</div><div><strong>Raina N.</strong><br><span style="font-size:0.7rem;">Jakarta</span></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Kemeja VIRWEAR cocok banget buat sehari-hari. Bahannya adem, nggak gampang kusut. Desainnya simpel tapi elegan."</p><div class="testi-avatar">DA</div><div><strong>Dimas A.</strong><br><span style="font-size:0.7rem;">Bandung</span></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Hoodienya fav banget! Hangat, oversizednya pas, dan suka sama sentuhan biru navy yang maskulin. Next bakal repeat!"</p><div class="testi-avatar">MR</div><div><strong>M. Rizky</strong><br><span style="font-size:0.7rem;">Surabaya</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="container contact-grid">
+    <div>
+      <span class="section-label">Hubungi Kami</span>
+      <h2 class="section-title">Kolaborasi &<br>Pertanyaan</h2>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><strong>Studio & Showroom</strong><br>Jl. Nanggung, Kab. Bogor 16650</div></div>
+      <div class="contact-item"><div class="contact-icon">📱</div><div><strong>WhatsApp</strong><br>+62 888-8888-8888 (CS 09.00 - 18.00)</div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><strong>Email</strong><br>virwear@official.id</div></div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <input type="text" placeholder="Nama lengkap" class="form-input">
+        <input type="email" placeholder="Email / WhatsApp" class="form-input">
+        <select class="form-select">
+          <option>Pilih topik</option><option>Informasi produk</option><option>Reseller / Kerja sama</option><option>Custom order</option>
+        </select>
+        <textarea rows="3" placeholder="Tulis pesan..." class="form-textarea"></textarea>
+        <button class="form-submit" onclick="alert('Terima kasih! Kami akan membalas dalam 1x24 jam 🤍')">Kirim Pesan →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div><div class="footer-logo">VIRWEAR</div><p style="margin-top: 0.7rem;">Premium clothing brand — timeless, tenang, estetik.</p></div>
+    <div><h4>Jelajahi</h4><ul style="list-style: none; margin-top: 0.5rem;"><li>Kaos Oversize</li><li>Kemeja Casual</li><li>Hoodie</li></ul></div>
+    <div><h4>Info</h4><ul style="list-style: none;"><li>Cara Pemesanan</li><li>Pengembalian</li><li>Panduan Ukuran</li></ul></div>
+    <div><h4>Media</h4><div>Instagram</div><div>Tiktok</div></div>
+  </div>
+  <div style="text-align: center; margin-top: 2rem; font-size: 0.7rem;">© 2025 VIRWEAR — crafted with heart in Indonesia</div>
+</footer>
+
+<script>
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('navOpen')?.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  document.getElementById('navClose')?.addEventListener('click', closeMobileNav);
+  function closeMobileNav() { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }
+  mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) closeMobileNav(); });
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 40) nav.style.background = 'rgba(255,255,255,0.96)';
+    else nav.style.background = 'rgba(255,255,255,0.92)';
+  });
+  const fadeElements = document.querySelectorAll('.product-card, .feature-card, .testi-card, .stat-card');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+  }, { threshold: 0.1 });
+  fadeElements.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(18px)'; el.style.transition = '0.4s ease'; obs.observe(el); });
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>VIRWEAR | Biru Tenang · Premium Clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --bg-soft: #f4f8fe;
+    --bg-pure: #ffffff;
+    --blue-deep: #0a2b3e;
+    --blue-accent: #2c7da0;
+    --blue-light: #e6f0f9;
+    --blue-mid: #bbd4e5;
+    --text-dark: #1c2e3a;
+    --text-soft: #406277;
+    --card-shadow: 0 12px 28px -8px rgba(10,43,62,0.06), 0 2px 4px rgba(0,0,0,0.02);
+    --border-light: #e2edf5;
+    --gradient-hero: linear-gradient(120deg, #eef4fc 0%, #ffffff 100%);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-soft);
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.8rem;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(44, 125, 160, 0.15);
+    padding: 0.85rem 2rem;
+    transition: all 0.2s ease;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    background: linear-gradient(130deg, #0a2b3e, #2c7da0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    transition: 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue-accent); }
+  .nav-cta {
+    background: var(--blue-deep);
+    color: white !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 40px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(10,43,62,0.08);
+  }
+  .nav-cta:hover {
+    background: #2c7da0;
+    transform: translateY(-2px);
+  }
+
+  /* MOBILE */
+  .mobile-menu-btn {
+    display: none;
+    background: var(--blue-deep);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(12px);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+  }
+  .mobile-nav-overlay.open { display: flex; }
+  .mobile-nav-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: var(--blue-deep);
+    border: none;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    font-size: 1rem;
+  }
+  .mobile-nav-overlay a {
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-dark);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: var(--gradient-hero);
+    padding-top: 100px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(44,125,160,0.1);
+    padding: 0.3rem 1rem;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--blue-accent);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--blue-deep);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title span {
+    color: var(--blue-accent);
+    font-style: italic;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-soft);
+    margin-bottom: 2rem;
+    max-width: 90%;
+  }
+  .btn-primary {
+    background: var(--blue-deep);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 1rem;
+    transition: 0.25s;
+    box-shadow: 0 6px 12px rgba(10,43,62,0.08);
+  }
+  .btn-primary:hover {
+    background: #2c7da0;
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1.5px solid var(--blue-mid);
+    color: var(--blue-deep);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+  .btn-ghost:hover {
+    border-color: var(--blue-accent);
+    background: rgba(44,125,160,0.05);
+  }
+  .hero-visual {
+    background: rgba(255,255,255,0.7);
+    border-radius: 48px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(44,125,160,0.2);
+    backdrop-filter: blur(2px);
+  }
+  .hero-badge-large {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    color: #cfe2ed;
+    letter-spacing: -2px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--blue-deep);
+    color: white;
+    padding: 0.8rem 0;
+    overflow: hidden;
+  }
+  .ticker-inner {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 22s linear infinite;
+    gap: 2rem;
+  }
+  .ticker-item { font-weight: 500; letter-spacing: 0.5px; font-size: 0.85rem; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  section { padding: 5rem 0; }
+  .section-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: var(--blue-accent);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: var(--blue-deep);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .stat-card {
+    background: white;
+    border-radius: 28px;
+    padding: 1.4rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-light);
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+  }
+  .about-img {
+    background: linear-gradient(145deg, #e0edf7, #f4f9fe);
+    border-radius: 42px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--blue-deep);
+    box-shadow: var(--card-shadow);
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* PRODUK - DENGAN GAMBAR & HARGA */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  .product-card {
+    background: white;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-light);
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 25px 35px -14px rgba(10,43,62,0.12); }
+  .product-visual {
+    background: #f8fafd;
+    padding: 1rem;
+    text-align: center;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .product-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 24px;
+    transition: transform 0.4s ease;
+  }
+  .product-card:hover .product-img {
+    transform: scale(1.02);
+  }
+  .product-tag {
+    display: inline-block;
+    background: #eef3fc;
+    color: var(--blue-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 0.2rem 1rem;
+    margin: 1rem 0 0 1rem;
+  }
+  .product-info { padding: 1.5rem; }
+  .product-name { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .product-desc { color: var(--text-soft); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; }
+  
+  /* Style HARGA baru */
+  .product-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .price-original {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+  .price-discount {
+    background: #e8f0fe;
+    color: var(--blue-accent);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 30px;
+    font-weight: 500;
+  }
+  
+  .variant-pill {
+    display: inline-block;
+    background: #f0f5fa;
+    border-radius: 40px;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+  }
+  
+  /* Tombol Beli */
+  .buy-btn {
+    display: inline-block;
+    background: var(--blue-deep);
+    color: white;
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+  .buy-btn:hover {
+    background: var(--blue-accent);
+    transform: translateY(-2px);
+  }
+
+  /* FEATURE */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .feature-card {
+    background: white;
+    border-radius: 28px;
+    padding: 1.8rem;
+    box-shadow: var(--card-shadow);
+    transition: 0.2s;
+    border: 1px solid var(--border-light);
+  }
+  .feature-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-mid);
+    margin-bottom: 0.8rem;
+  }
+
+  /* TESTIMONI */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  .testi-card {
+    background: white;
+    border-radius: 28px;
+    padding: 1.8rem;
+    box-shadow: var(--card-shadow);
+  }
+  .testi-stars { color: #eab308; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { color: var(--text-soft); line-height: 1.55; margin-bottom: 1.2rem; }
+  .testi-avatar {
+    width: 42px;
+    height: 42px;
+    background: #e5eff8;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-accent);
+    font-weight: 600;
+  }
+
+  /* KONTAK */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: white;
+    border-radius: 48px;
+    padding: 2.5rem;
+    box-shadow: var(--card-shadow);
+  }
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .contact-icon {
+    background: #eef3fc;
+    width: 46px;
+    height: 46px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-accent);
+  }
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border-light);
+    border-radius: 32px;
+    background: var(--bg-soft);
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .form-submit {
+    background: var(--blue-deep);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0e2a38;
+    color: #e3edf5;
+    border-radius: 40px 40px 0 0;
+    margin-top: 2rem;
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .wa-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: #25D366;
+    border-radius: 60px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    z-index: 99;
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+    .hero-grid, .about-grid, .product-grid, .features-grid, .testi-grid, .contact-grid, .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-desc { max-width: 100%; }
+    .hero-visual { margin-top: 1rem; }
+    .container { padding: 0 1.2rem; }
+    section { padding: 3rem 0; }
+    .contact-grid { padding: 1.5rem; }
+    .product-img { height: 200px; }
+  }
+  @media (max-width: 550px) {
+    .hero-buttons { display: flex; flex-direction: column; gap: 0.8rem; }
+    .btn-primary, .btn-ghost { text-align: center; margin: 0; }
+    .product-grid { gap: 1.2rem; }
+    .features-grid { gap: 1rem; }
+    .product-img { height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-nav-overlay" id="mobileNav">
+  <button class="mobile-nav-close" id="navClose">✕</button>
+  <a href="#tentang" onclick="closeMobileNav()">Tentang</a>
+  <a href="#produk" onclick="closeMobileNav()">Koleksi</a>
+  <a href="#kontak" class="nav-cta" style="background: #0a2b3e; color:white;" onclick="closeMobileNav()">Hubungi Kami</a>
+</div>
+
+<!-- GANTI NOMOR WHATSAPP DI BAWAH INI dengan nomor kamu -->
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank">💬</a>
+
+<nav>
+  <div class="nav-container">
+    <a href="#" class="logo">VIRWEAR</a>
+    <ul class="nav-links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+    </ul>
+    <button class="mobile-menu-btn" id="navOpen">☰ Menu</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-eyebrow">✦ PREMIUM CLOTHING INDONESIA ✦</span>
+      <h1 class="hero-title">Pakaian dengan <span>Cerita & Karakter</span></h1>
+      <p class="hero-desc">Dari bahan terbaik, untuk jiwa yang estetik. Kaos, kemeja, hoodie — tenang namun berkelas. Tampil beda dengan sentuhan biru yang kalem.</p>
+      <div class="hero-buttons">
+        <a href="#produk" class="btn-primary">Lihat Koleksi →</a>
+        <a href="#tentang" class="btn-ghost">Cerita Kami</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge-large">VIRWEAR</div>
+      <p style="margin-top: 1rem; font-weight: 500; color: var(--blue-accent);">| tenang & bermakna |</p>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">✦ Bahan Premium ✦</span> <span>⚬</span>
+    <span class="ticker-item">Desain Eksklusif ✦</span> <span>⚬</span>
+    <span class="ticker-item">Nyaman Sepanjang Hari ✦</span> <span>⚬</span>
+    <span class="ticker-item">Gratis Ongkir ✦</span> <span>⚬</span>
+    <span class="ticker-item">Ready Stock ✦</span> <span>⚬</span>
+    <span class="ticker-item">✦ Bahan Premium ✦</span> <span>⚬</span>
+    <span class="ticker-item">Desain Eksklusif ✦</span>
+  </div>
+</div>
+
+<section id="tentang">
+  <div class="container about-grid">
+    <div>
+      <span class="section-label">Tentang VIRWEAR</span>
+      <h2 class="section-title">Fashion Bukan Sekadar Gaya, Tapi Identitas</h2>
+      <p style="margin-bottom: 1.2rem; color: var(--text-soft);">VIRWEAR lahir dari cinta pada detail & kenyamanan. Kami percaya setiap lembar kain bisa menjadi medium ekspresi. Dari bahan pilihan hingga jahitan presisi, semua kami persembahkan untuk kamu yang mengedepankan estetika tenang namun kuat.</p>
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-num">6K+</span><div>Pelanggan Puas</div></div>
+        <div class="stat-card"><span class="stat-num">4.9</span><div>Rating Google</div></div>
+        <div class="stat-card"><span class="stat-num">100%</span><div>Bahan Berkualitas</div></div>
+        <div class="stat-card"><span class="stat-num">24 Jam</span><div>Proses Cepat</div></div>
+      </div>
+    </div>
+    <div class="about-img">
+      <span style="font-size: 1.6rem;">⎯  studio  ⎯  <br> #virwear</span>
+    </div>
+  </div>
+</section>
+
+<section id="produk" style="background: white;">
+  <div class="container">
+    <span class="section-label">Koleksi Kami</span>
+    <h2 class="section-title">Pilih Gaya yang Mencerminkan Dirimu</h2>
+    <div class="product-grid">
+      <!-- Produk 1: Kaos Oversize Rp65.000 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <img class="product-img" src="https://placehold.co/600x700/e6f0f9/2c7da0?text=Kaos+Oversize" alt="Kaos Oversize VIRWEAR">
+        </div>
+        <span class="product-tag">BESTSELLER</span>
+        <div class="product-info">
+          <div class="product-name">Kaos Oversize</div>
+          <p class="product-desc">Cotton combed 30s, potongan oversize yang nyaman. Cocok untuk santai maupun hangout.</p>
+          <div class="product-price">
+            Rp65.000
+            <span class="price-discount">Diskon 20%</span>
+          </div>
+          <div><span class="variant-pill">6 Warna</span><span class="variant-pill">S-XXL</span><span class="variant-pill">Oversize Fit</span></div>
+          <a href="https://wa.me/6281234567890?text=Halo%20VIRWEAR%2C%20saya%20mau%20beli%20Kaos%20Oversize" class="buy-btn" target="_blank">Beli via WhatsApp →</a>
+        </div>
+      </div>
+
+      <!-- Produk 2: Kemeja Casual Rp95.000 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <img class="product-img" src="https://placehold.co/600x700/f0f5fa/2c7da0?text=Kemeja+Casual" alt="Kemeja Casual VIRWEAR">
+        </div>
+        <span class="product-tag">NEW</span>
+        <div class="product-info">
+          <div class="product-name">Kemeja Casual</div>
+          <p class="product-desc">Linen & katun premium, desain minimalis namun berkarakter. Cocok untuk daily atau semi formal.</p>
+          <div class="product-price">
+            Rp95.000
+            <span class="price-discount">Hemat 15%</span>
+          </div>
+          <div><span class="variant-pill">Lengan Pendek</span><span class="variant-pill">Motif garis</span><span class="variant-pill">Ukuran S-L</span></div>
+          <a href="https://wa.me/6281234567890?text=Halo%20VIRWEAR%2C%20saya%20mau%20beli%20Kemeja%20Casual" class="buy-btn" target="_blank">Beli via WhatsApp →</a>
+        </div>
+      </div>
+
+      <!-- Produk 3: Hoodie Rp120.000 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <img class="product-img" src="https://placehold.co/600x700/eef3fc/2c7da0?text=Hoodie" alt="Hoodie Premium VIRWEAR">
+        </div>
+        <span class="product-tag">LIMITED</span>
+        <div class="product-info">
+          <div class="product-name">Hoodie</div>
+          <p class="product-desc">Fleece anti-pilling, potongan rapi. Hangat & tetap stylish untuk cuaca apapun.</p>
+          <div class="product-price">
+            Rp120.000
+            <span class="price-discount">Best Deal</span>
+          </div>
+          <div><span class="variant-pill">3 Warna earth</span><span class="variant-pill">Oversized fit</span><span class="variant-pill">Unisex</span></div>
+          <a href="https://wa.me/6281234567890?text=Halo%20VIRWEAR%2C%20saya%20mau%20beli%20Hoodie" class="buy-btn" target="_blank">Beli via WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <span class="section-label">Keunggulan</span>
+    <h2 class="section-title">Kenapa Harus VIRWEAR?</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-num">01</div><div class="feature-title">Bahan Terpilih</div><p>Cotton combed, linen, fleece premium yang nyaman di kulit dan tahan lama.</p></div>
+      <div class="feature-card"><div class="feature-num">02</div><div class="feature-title">Desain Eksklusif</div><p>Tidak diproduksi massal, setiap koleksi memiliki sentuhan khas VIRWEAR.</p></div>
+      <div class="feature-card"><div class="feature-num">03</div><div class="feature-title">Etis & Lokal</div><p>Dibuat di Indonesia dengan memberdayakan pengrajin lokal dan standar etis.</p></div>
+      <div class="feature-card"><div class="feature-num">04</div><div class="feature-title">Packing Estetik</div><p>Setiap pesanan dikemas rapi dengan sentuhan premium dan ramah lingkungan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <span class="section-label">Testimoni</span>
+    <h2 class="section-title">Apa Kata Mereka</h2>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Kaosnya lembut banget! Jahitan rapi dan warnanya awet. Suka banget sama konsep biru putihnya yang kalem tapi tetap berkarakter."</p><div class="testi-avatar">RN</div><div><strong>Raina N.</strong><br><span style="font-size:0.7rem;">Jakarta</span></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Kemeja VIRWEAR cocok banget buat sehari-hari. Bahannya adem, nggak gampang kusut. Desainnya simpel tapi elegan."</p><div class="testi-avatar">DA</div><div><strong>Dimas A.</strong><br><span style="font-size:0.7rem;">Bandung</span></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Hoodienya fav banget! Hangat, oversizednya pas, dan suka sama sentuhan biru navy yang maskulin. Next bakal repeat!"</p><div class="testi-avatar">MR</div><div><strong>M. Rizky</strong><br><span style="font-size:0.7rem;">Surabaya</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="container contact-grid">
+    <div>
+      <span class="section-label">Hubungi Kami</span>
+      <h2 class="section-title">Kolaborasi &<br>Pertanyaan</h2>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><strong>Studio & Showroom</strong><br>Jl. Nanggung, Kab. Bogor 16650</div></div>
+      <div class="contact-item"><div class="contact-icon">📱</div><div><strong>WhatsApp</strong><br>+62 888-8888-8888 (CS 09.00 - 18.00)</div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><strong>Email</strong><br>virwear@official.id</div></div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <input type="text" placeholder="Nama lengkap" class="form-input">
+        <input type="email" placeholder="Email / WhatsApp" class="form-input">
+        <select class="form-select">
+          <option>Pilih topik</option><option>Informasi produk</option><option>Reseller / Kerja sama</option><option>Custom order</option>
+        </select>
+        <textarea rows="3" placeholder="Tulis pesan..." class="form-textarea"></textarea>
+        <button class="form-submit" onclick="alert('Terima kasih! Kami akan membalas dalam 1x24 jam 🤍')">Kirim Pesan →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div><div class="footer-logo">VIRWEAR</div><p style="margin-top: 0.7rem;">Premium clothing brand — timeless, tenang, estetik.</p></div>
+    <div><h4>Jelajahi</h4><ul style="list-style: none; margin-top: 0.5rem;"><li>Kaos Oversize</li><li>Kemeja Casual</li><li>Hoodie</li></ul></div>
+    <div><h4>Info</h4><ul style="list-style: none;"><li>Cara Pemesanan</li><li>Pengembalian</li><li>Panduan Ukuran</li></ul></div>
+    <div><h4>Media</h4><div>Instagram</div><div>Tiktok</div></div>
+  </div>
+  <div style="text-align: center; margin-top: 2rem; font-size: 0.7rem;">© 2025 VIRWEAR — crafted with heart in Indonesia</div>
+</footer>
+
+<script>
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('navOpen')?.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  document.getElementById('navClose')?.addEventListener('click', closeMobileNav);
+  function closeMobileNav() { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }
+  mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) closeMobileNav(); });
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 40) nav.style.background = 'rgba(255,255,255,0.96)';
+    else nav.style.background = 'rgba(255,255,255,0.92)';
+  });
+  const fadeElements = document.querySelectorAll('.product-card, .feature-card, .testi-card, .stat-card');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+  }, { threshold: 0.1 });
+  fadeElements.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(18px)'; el.style.transition = '0.4s ease'; obs.observe(el); });
+</script>
+</body>
+</html>
